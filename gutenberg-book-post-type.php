@@ -59,7 +59,7 @@ class Gutenberg_Custom_Post_Type {
      */
     public function plugin_setup() {
 
-          $this->includes();
+        $this->includes();
 
         add_action( 'init', array( $this, 'load_language' ) );
         add_action( 'init', array( $this, 'register_block' ) );
