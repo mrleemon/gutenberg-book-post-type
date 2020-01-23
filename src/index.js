@@ -30,18 +30,18 @@ let PublicationYearControl = ({ publication_year, onUpdatePublicationYear }) => 
 );
 
 IsbnControl = compose( [
-	withSelect( ( select ) => {
-		return {
+    withSelect( ( select ) => {
+        return {
             isbn: select( 'core/editor' ).getEditedPostAttribute( 'meta' )['_book_isbn']
         };
-	} ),
-	withDispatch( ( dispatch ) => {
-		return {
+    } ),
+    withDispatch( ( dispatch ) => {
+        return {
             onUpdateIsbn: ( value ) => {
                 dispatch( 'core/editor' ).editPost({ meta: { _book_isbn: value } })
             }
         }
-	} ),
+    } ),
 ] )( IsbnControl );
 
 
