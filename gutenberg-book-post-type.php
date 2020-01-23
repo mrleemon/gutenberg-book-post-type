@@ -23,7 +23,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-class Gutenberg_Custom_Post_Type {
+class Gutenberg_Book_Post_Type {
 
     /**
      * Plugin instance.
@@ -213,4 +213,4 @@ class Gutenberg_Custom_Post_Type {
 
 }
 
-add_action( 'plugins_loaded', array ( Gutenberg_Custom_Post_Type::get_instance(), 'plugin_setup' ) );
+add_action( 'plugins_loaded', array ( Gutenberg_Book_Post_Type::get_instance(), 'plugin_setup' ) );
