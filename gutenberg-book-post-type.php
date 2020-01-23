@@ -112,8 +112,7 @@ class Gutenberg_Book_Post_Type {
             'gutenberg-book-post-type',
             plugins_url( 'build/index.js', __FILE__ ),
             array( 'wp-blocks', 'wp-components', 'wp-edit-post', 'wp-element', 'wp-i18n', 'wp-plugins' ),
-            filemtime( plugin_dir_path( __FILE__ ) . 'build/index.js' ),
-            false // can't be loaded on footer at the moment
+            filemtime( plugin_dir_path( __FILE__ ) . 'build/index.js' )
         );
 
         // Translate scripts
