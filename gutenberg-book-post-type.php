@@ -62,12 +62,11 @@ class Gutenberg_Book_Post_Type {
         $this->includes();
 
         add_action( 'init', array( $this, 'load_language' ) );
-        add_action( 'init', array( $this, 'register_block' ) );
         add_action( 'init', array( $this, 'register_custom_type' ) );
         add_action( 'init', array( $this, 'register_meta_fields' ) );
-        
-        //add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-    
+
+        add_action( 'enqueue_block_editor_assets', array( $this,  'enqueue_block_editor_assets' ) );
+
     }
 
     
@@ -101,32 +100,15 @@ class Gutenberg_Book_Post_Type {
 
 
     /**
-     * Registers block
+     * Enqueues block editor assets
      *
      * @since 1.0
      *
      */
-    function register_block() {
-        wp_register_style(
-            'gutenberg-book-post-type',
-            plugins_url( 'build/editor.css', __FILE__ ),
-            array( 'wp-edit-blocks' ),
-            filemtime( plugin_dir_path( __FILE__ ) . 'build/editor.css' )
-        );
-        wp_register_style(
-            'gutenberg-book-post-type-frontend',
-            plugins_url( 'build/style.css', __FILE__ ),
-            array( 'wp-blocks' ),
-            filemtime( plugin_dir_path( __FILE__ ) . 'build/style.css' )
-        );
-        wp_register_script(
-            'gutenberg-book-post-type-frontend',
-            plugins_url( 'assets/js/frontend.js', __FILE__ ),
-            array( 'mc-validate' ),
-            filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/frontend.js' ),
-            true
-        );
-        wp_register_script(
+    function enqueue_block_editor_assets() {
+
+        // Load scripts
+        wp_enqueue_script(
             'gutenberg-book-post-type',
             plugins_url( 'build/index.js', __FILE__ ),
             array( 'wp-blocks', 'wp-components', 'wp-edit-post', 'wp-element', 'wp-i18n', 'wp-plugins' ),
@@ -134,17 +116,10 @@ class Gutenberg_Book_Post_Type {
             false // can't be loaded on footer at the moment
         );
 
-        register_block_type( 'occ/custom-post-type', array(
-            'editor_style'  => 'gutenberg-book-post-type',
-            'editor_script' => 'gutenberg-book-post-type',
-            'style' => 'gutenberg-book-post-type-frontend',
-            'script' => 'gutenberg-book-post-type-frontend',
-        ) );
-
+        // Translate scripts
         wp_set_script_translations( 'gutenberg-book-post-type', 'gutenberg-book-post-type', plugin_dir_path( __FILE__ ) . 'languages' );
 
     }
-
 
     /**
      * Registers custom post type
