@@ -1,12 +1,12 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { TextControl } = wp.components;
-const { registerPlugin } = wp.plugins;
-const { PluginDocumentSettingPanel } = wp.editPost;
-const { select, withSelect, withDispatch } = wp.data;
+import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
+import { TextControl } from '@wordpress/components';
+import { registerPlugin } from '@wordpress/plugins';
+import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
+import { withSelect, withDispatch } from '@wordpress/data';
 
 var currentDate = new Date();
 var currentYear = currentDate.getFullYear();
