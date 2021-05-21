@@ -33,7 +33,6 @@ class Gutenberg_Book_Post_Type {
      */
     protected static $instance = null;
 
-
     /**
      * Access this plugin’s working instance
      *
@@ -49,7 +48,6 @@ class Gutenberg_Book_Post_Type {
         return self::$instance;
 
     }
-
     
     /**
      * Used for regular plugin work.
@@ -68,7 +66,6 @@ class Gutenberg_Book_Post_Type {
         add_action( 'enqueue_block_editor_assets', array( $this,  'enqueue_block_editor_assets' ) );
 
     }
-
     
     /**
      * Constructor. Intentionally left empty and public.
@@ -78,15 +75,13 @@ class Gutenberg_Book_Post_Type {
      */
     public function __construct() {}
     
-    
-     /**
+    /**
      * Includes required core files used in admin and on the frontend.
      *
      * @since 1.0
      *
      */
     protected function includes() {}
-
 
     /**
      * Loads language
@@ -97,7 +92,6 @@ class Gutenberg_Book_Post_Type {
     function load_language() {
         load_plugin_textdomain( 'gutenberg-book-post-type', '', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
-
 
     /**
      * Enqueues block editor assets
@@ -156,7 +150,6 @@ class Gutenberg_Book_Post_Type {
         register_post_type( 'book', $args );
     }
 
-
     /**
      * Registers meta fields
      *
@@ -183,7 +176,6 @@ class Gutenberg_Book_Post_Type {
         ) );
 
     }
-
 
 }
 
